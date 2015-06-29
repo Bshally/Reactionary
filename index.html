@@ -5,3 +5,19 @@
 <body>
 
 </body>
+<script type="text/jsx">
+  // Define a class. Class is like a cookiecutter.
+  var HelloWorld = React.createClass({
+    render: function(){
+      return <div>
+        Hello World!
+      </div>
+    }
+  });
+
+  // React please render this class. Use the cookie cutter.
+  var element = React.createElement(HelloWorld);
+
+  // React, after render place it in my body tag. Put the cookie on the plate.
+  React.render(element, document.body);
+</script>
