@@ -1,0 +1,34 @@
+<head>
+<script src="https://fb.me/react-0.13.3.js"></script>
+<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<!--Steps to turn a static element into a dynamic component-->
+    <ol>
+        <li>Replace any text to be dynamic with curly braces and a reference to this.props .</li>
+        <li>Create options obj and pass into createElement as second argument.</li>
+
+    </ol>
+</body>
+<script type="text/jsx">
+  // Define a class. Class is like a cookiecutter.
+  var Badge = React.createClass({
+    render: function(){
+//    this.props is like an object that every instance of the component has.
+        this.props //{}
+      return <button className="btn btn-primary" type="button">
+          {this.props.title} <span className="badge">4</span>
+      </button>
+    }
+  });
+var options = {
+        title: 'Inbox',
+        number: 32
+  };
+  // React please render this class. Use the cookie cutter.
+  var element = React.createElement(Badge, options);
+
+  // React, after render place it in my body tag. Put the cookie on the plate.
+  React.render(element, document.body);
+</script>
