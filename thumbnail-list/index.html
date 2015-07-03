@@ -1,0 +1,67 @@
+<head>
+<script src="https://fb.me/react-0.13.3.js"></script>
+<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+<script type="text/jsx">
+  var Badge = React.createClass({
+    render: function(){
+      return <button className="btn btn-primary" type="button">
+          {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var Thumbnail = React.createClass({
+     render: function(){
+         return <div className="col-sm-6 col-md-4">
+             <div className="thumbnail">
+                 <img src={this.props.imageUrl} alt="..."/>
+                     <div className="caption">
+                         <h3>{this.props.header}</h3>
+                         <p>{this.props.description}</p>
+                         <p>
+                             <Badge title={this.props.title} number={this.props.number}/>
+                         </p>
+                     </div>
+                 </div>
+             </div>
+     }
+  });
+
+
+  var ThumbnailList = React.createClass({
+      render: function(){
+        var list = this.props.thumbnailData.map(function(thumbnailProps){
+            return <Thumbnail {...thumbnailProps} />
+        });
+          return <div>
+              {list}
+          </div>
+      }
+  });
+
+var options ={
+        thumbnailData: [{
+            title: 'See Tutorials',
+            number: 32,
+            header: 'Learning React',
+            description: 'React is a front end javascript framework that makes it easy to render composable, reusable components.',
+            imageUrl: 'http://codewinds.com/assets/article/reactjs-conf-logo-dsc_5109-800.jpg'
+  },{
+            title: 'See Tutorials',
+            number: 23,
+            header: 'Learning Gulp',
+            description: 'Gulp will speed up workflow in development.Gulp will speed up workflow in development. Gulp will speed up workflow in development.',
+            imageUrl: 'https://pbs.twimg.com/profile_images/417078109075034112/iruTC031_400x400.png'
+        }]
+  };
+
+    var element = React.createElement(ThumbnailList, options);
+    React.render(element, document.querySelector('.container'));
+</script>
